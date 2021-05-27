@@ -29,7 +29,8 @@ app.get("/text/sentiment", (req,res) => {
     return res.send("text sentiment for "+req.query.text);
 });
 
-function getNLUInstance() {
+function getNLUInstance(link) {
+    console.log("URL 2 " +link); 
     let api_key = process.env.API_KEY;
     let api_url = process.env.API_URL;
 
@@ -43,6 +44,18 @@ function getNLUInstance() {
         }),
         serviceUrl: api_url,
     });
+
+    const analyzeParams = { 
+        'url': link, 
+        'features': { 
+            'emotion': { 'sentiment': true, 'limit': 1 } 
+        } };
+
+    naturalLanguageUnderstanding.analyze(analyzeParams) 
+    .then(analysisResults => { 
+        console.log(JSON.stringify(analysisResults, null, 2)); 
+    }) .catch(err => { console.log('error:', err); }); 
+    
     return naturalLanguageUnderstanding;
 }
 

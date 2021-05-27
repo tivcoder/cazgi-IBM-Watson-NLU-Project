@@ -16,14 +16,14 @@ class EmotionTable extends React.Component {
     }
 
     renderTableData() {
-        return this.state.emotions.map(sentiment, index) {
+        return this.state.emotions.map((sentiment, index) => {
             const { emotion, value } = sentiment
             return (
                 <tr key={emotion}>
                 <td>{value}</td>
                 </tr>
-            );
-        }
+            )
+        })
     }
 
     render() {
@@ -37,7 +37,7 @@ class EmotionTable extends React.Component {
          </div>
       )
    }
-
 }
+
 
 export default EmotionTable;
