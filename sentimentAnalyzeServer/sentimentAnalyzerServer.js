@@ -14,7 +14,7 @@ app.get("/",(req,res)=>{
 
 app.get("fetch/url/emotion:link", (req,res) => {
 
-    res.send(" URL is " + req.params.link); var link = req.params.link; getNLUInstance(link)});
+    return res.send(" URL is " + req.params.link); var link = req.params.link; getNLUInstance(link)});
 
 
 app.get("/url/sentiment", (req,res) => {
@@ -22,7 +22,7 @@ app.get("/url/sentiment", (req,res) => {
 });
 
 app.get("fetch/emotiontext/:story", (req,res) => {
-    res.send(" text is " + req.params.story); var story = req.params.story; getNLUInstance(story)});
+    return res.send(" text is " + req.params.story); var story = req.params.story; getNLUInstance(story)});
 
 
 app.get("/text/sentiment", (req,res) => {
@@ -30,7 +30,7 @@ app.get("/text/sentiment", (req,res) => {
 });
 
 function getNLUInstance(link) {
-    console.log("URL 2 " +link); 
+    console.log("URL 2 " + link); 
     let api_key = process.env.API_KEY;
     let api_url = process.env.API_URL;
 
